@@ -1,3 +1,5 @@
 *.csv
 secrets.ini
 *.ipynb
+__pycache__*
+*.sqlite
