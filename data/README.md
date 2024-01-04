@@ -15,9 +15,17 @@ Data are reported in aggregate, with total daily ILI-related visits accross all 
 TODO
 
 ## Online Search Trends
-[Google Extended Trends for Health](https://doi-org.proxy1.cl.msu.edu/10.1016/j.simpa.2021.100060)
+[Google Extended Trends for Health (GETH)](https://doi.org/10.1016/j.simpa.2021.100060)
 
 TODO
+
+More info about GETH [here](https://doi.org/10.1016/j.simpa.2021.100060) and [here](https://www.mdpi.com/1660-4601/19/22/15396#app1-ijerph-19-15396)
+
+Go [here](https://support.google.com/trends/contact/trends_api) to request private access
+
+Go [here](https://docs.google.com/forms/d/e/1FAIpQLSfDhe_gg28tgeEttsSAPCmdO4U0wbqorVBG4Azr46IowGkCtA/viewform) to view Google's private API access TOS
+
+
 
 ## Weather Data
 [National Centers for Environmental Information (NCEI)](https://www.ncei.noaa.gov/cdo-web/)
