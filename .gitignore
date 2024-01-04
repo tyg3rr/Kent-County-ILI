@@ -1,0 +1,8 @@
+*.csv
+secrets.ini
+*.ipynb
+*__pycache__*
+*.sqlite
+*pyaqsapi*
+C:\Users\ljens\OneDrive\Documents\MSU MPH\capstone\ILI-in-Kent-County\pyaqsapi
+
