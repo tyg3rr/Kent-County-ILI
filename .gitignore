@@ -1,6 +1,6 @@
 *.csv
 secrets.ini
-*.ipynb
+*hide.ipynb
 *pycache*
 *.sqlite
 *pyaqsapi*
