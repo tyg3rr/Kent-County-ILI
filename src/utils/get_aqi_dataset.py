@@ -2,11 +2,16 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 from epiweeks import Week
+from os import path
+import configparser
+cfg = configparser.ConfigParser()
+cfg.read('utils/secrets.ini')
 
 def get_aqi_dataset() -> pd.DataFrame:
-
+    ROOT_PATH = path.abspath(cfg.get('default','root'))
+    DATA_PATH = path.join(ROOT_PATH, 'src/data')
     dd = pd.concat(
-        [pd.read_csv(f'aqidaily{year}.csv') for year in range(2005,2020)])
+        [pd.read_csv(path.join(DATA_PATH, f'aqidaily{year}.csv')) for year in range(2005,2020)])
     dd = dd[['Date','Overall AQI Value','Main Pollutant','CO','Ozone','PM10','PM25']]
     for poll in ['CO','Ozone','PM10','PM25']:
         dd[poll] = pd.to_numeric(dd[poll], errors='coerce')

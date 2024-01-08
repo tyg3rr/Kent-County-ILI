@@ -4,7 +4,7 @@ from datetime import date
 from epiweeks import Week
 
 cfg = configparser.ConfigParser()
-secrets = cfg.read("secrets.ini")
+secrets = cfg.read("utils/secrets.ini")
 
 SERVER = 'https://www.googleapis.com/trends/'
 VERSION = 'v1beta'

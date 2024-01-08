@@ -5,7 +5,7 @@ import pandas as pd
 from epiweeks import Week
 
 config = configparser.ConfigParser()
-secrets = config.read('secrets.ini')
+secrets = config.read('utils/secrets.ini')
 my_token = config.get('default','ncdc_token')
 ncei = NCEIBot(my_token, cache_name='ncei_cache', expire_after=3600)
 
