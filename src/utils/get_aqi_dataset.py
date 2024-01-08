@@ -18,5 +18,13 @@ def get_aqi_dataset() -> pd.DataFrame:
     dd['Date'] = pd.to_datetime(dd['Date'])
     dd['epiweek'] = dd['Date'].map(lambda x: Week.fromdate(x))
     dd = dd.set_index('epiweek').drop(columns=['Date'])
-    dd = dd.groupby('epiweek').aggregate(lambda x: x.mode() if x.dtype == 'O' else x.mean())
+    dd['aqi'] = pd.cut(dd['Overall AQI Value'], 
+                        bins=[0,50,100,200],
+                        labels=['Good','Moderate','Unhealthy'])
+    dd = pd.get_dummies(dd, columns=['aqi'], prefix=['Days '], prefix_sep=[''])
+
+    dd = dd.groupby('epiweek').aggregate(lambda x: 
+                                        x.mode() if x.dtype == 'O' 
+                                        else x.sum() if x.name[0:4] == 'Days'
+                                        else x.mean())
     return dd.round()
