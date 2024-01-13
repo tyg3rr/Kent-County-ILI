@@ -15,7 +15,7 @@ def get_aqi_dataset() -> pd.DataFrame:
     dd = dd[['Date','Overall AQI Value','Main Pollutant','CO','Ozone','PM10','PM25']]
     for poll in ['CO','Ozone','PM10','PM25']:
         dd[poll] = pd.to_numeric(dd[poll], errors='coerce')
-    dd['Date'] = pd.to_datetime(dd['Date'])
+    dd['Date'] = pd.to_datetime(dd['Date']).dt.date
     dd['epiweek'] = dd['Date'].map(lambda x: Week.fromdate(x))
     dd = dd.set_index('epiweek').drop(columns=['Date'])
     dd['aqi'] = pd.cut(dd['Overall AQI Value'], 
@@ -27,4 +27,4 @@ def get_aqi_dataset() -> pd.DataFrame:
                                         x.mode() if x.dtype == 'O' 
                                         else x.sum() if x.name[0:4] == 'Days'
                                         else x.mean())
-    return dd.round()
+    return dd

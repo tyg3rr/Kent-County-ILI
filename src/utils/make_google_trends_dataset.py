@@ -63,7 +63,10 @@ def make_dataset(iso_start_date = iso_start_date,
     for i in range(start_year, end_year+1, iter_years):
         url = url_builder(f'{i}-01-01', f'{i + iter_years - 1}-12-31', terms)
         res = requests.get(url)    
+        if res.status_code >= 400:
+            print(f"http error ({res.status_code}): {res.content}")
         contents = json.loads(res.content)['lines']
+
         for j in range(0,len(contents)):
             df = pd.json_normalize(contents[j]['points'],meta=['value', 'date'])
             df['term'] = contents[j]['term']
@@ -72,7 +75,7 @@ def make_dataset(iso_start_date = iso_start_date,
 
 
 def format_dataset(df):
-    df['date'] = pd.to_datetime(df['date'])
+    df['date'] = pd.to_datetime(df['date']).dt.date
     df['value'] = df['value'].apply(lambda x: round(x))
     df = df.pivot_table(values='value', index='date', columns='term')
     df.columns.name = None

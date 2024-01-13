@@ -40,7 +40,7 @@ def make_incidence_dataset(files: list = FILES) -> pd.DataFrame:
 def make_syndromic_dataset(syndromic_file = path.join(DATA_PATH, 'MSSS.csv')) -> pd.DataFrame:
 
     df = pd.read_csv(syndromic_file, usecols=['Admitted'])
-    df['visits'], df['Admitted'] = 1, pd.to_datetime(df['Admitted'])
+    df['visits'], df['Admitted'] = 1, pd.to_datetime(df['Admitted']).dt.date
     df['epiweek'] = df['Admitted'].apply(lambda x: Week.fromdate(x))
     
     return pd.DataFrame(df.groupby('epiweek')['visits'].sum())
