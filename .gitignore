@@ -1,8 +1,6 @@
 *.csv
 secrets.ini
-*hide.ipynb
 *pycache*
 *.sqlite
 *pyaqsapi*
-C:\Users\ljens\OneDrive\Documents\MSU MPH\capstone\ILI-in-Kent-County\pyaqsapi
-
+*hide.*
