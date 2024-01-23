@@ -34,12 +34,6 @@ def cyclical_encoding(data: pd.Series, cycle_length: int) -> pd.DataFrame:
 
     return result
 
-def difference(dataset, n):
-    """ this function intakes a list of values, 
-    subtracts the nth prior value,
-    and returns the list of differenced values.
-    """
-    return pd.Series([dataset[i] - dataset[i - n] for i in range(1, len(dataset))])
 
 def ADF(time_series, max_lags):
     """
