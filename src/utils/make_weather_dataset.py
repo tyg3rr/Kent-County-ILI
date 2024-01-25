@@ -32,14 +32,13 @@ def get_ncei_dataset(
     return res.to_dataframe()
 
 def format_dataset(df,term):
-    df['date'] = pd.to_datetime(df['date']).dt.date
+    df['date'] = pd.to_datetime(df['date'])
     df['value'] = df['value'].apply(lambda x: round(x))
     df = df.pivot_table(values='value', index='date', columns=term)
     df.columns.name = None
     df = df.reset_index()
     df['epiweek'] = df['date'].apply(lambda x: Week.fromdate(x))
-
-    df = df.drop(columns=['date']).groupby('epiweek').mean()
+    df = df.set_index('epiweek').drop(columns=['date'])
     return df
 
 def make_weather_dataset():

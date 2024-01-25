@@ -4,5 +4,3 @@ secrets.ini
 *.sqlite
 *pyaqsapi*
 *hide.*
-*.html
-*.xlsx
