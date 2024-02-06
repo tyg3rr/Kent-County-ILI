@@ -1,8 +1,44 @@
 import pandas as pd
 import numpy as np
+import math
 import matplotlib.pyplot as plt
 from statsmodels.tsa.stattools import adfuller
 import matplotlib.pyplot as plt
+from datetime import date
+from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error, mean_squared_error
+
+
+def train_test_validate_split(df: pd.DataFrame, end_train: date, end_validation: date):
+    '''
+    Returns end_train, end_validation, df_train, df_val, df_test
+    '''
+    
+    if df.index.freq == None:
+        print('Your data has no frequency. Resample and try again.')
+        return None
+    
+    df_train = df.loc[:end_train,:]
+    df_val = df.loc[end_train:end_validation,:]
+    df_test = df.loc[end_validation:,:]
+
+    print(f"Dates train      : {df_train.index.min()} --- {df_train.index.max()}  (n={len(df_train)})")
+    print(f"Dates validacion : {df_val.index.min()} --- {df_val.index.max()}  (n={len(df_val)})")
+    print(f"Dates test       : {df_test.index.min()} --- {df_test.index.max()}  (n={len(df_test)})")
+
+    return end_train, end_validation, df_train, df_val, df_test
+
+def describe_features(forecaster):
+    feature_importances = forecaster.get_feature_importances().set_index('feature')
+    feature_importances = feature_importances.loc[feature_importances['importance']>0]
+    feature_importances['abs'] = feature_importances.apply(abs)
+    feature_importances = feature_importances.sort_values(by='abs',ascending=False).drop(columns=['abs'])
+    return feature_importances
+
+def metrics(preds, actual):
+    mae = mean_absolute_error(actual, preds)
+    rmse = math.sqrt(mean_squared_error(actual, preds))
+    return mae, rmse
+
 
 
 def cyclical_encoding(data: pd.Series, cycle_length: int) -> pd.DataFrame:
