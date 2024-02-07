@@ -16,6 +16,8 @@ ILI case definition: fever over 100 °F alongside sore throat, cough, or both, w
 
 MDSS ILI cases reflect clinician-diagnosed and/or laboratory-confirmed cases. Sentinel physicians and laboratories participate with the State of Michigan Outpatient Influenza-Like Illness Surveillance Network (ILINet) to report confirmed cases of ILI. 
 
+---
+
 ## Online Search Trends
 [Google Extended Trends for Health (GETH)](https://doi.org/10.1016/j.simpa.2021.100060)
 
@@ -27,12 +29,16 @@ DMA US-MI-563 represents Kent County, MI.
 
 *More info about GETH [here](https://doi.org/10.1016/j.simpa.2021.100060) and [here](https://www.mdpi.com/1660-4601/19/22/15396#app1-ijerph-19-15396). Go [here](https://support.google.com/trends/contact/trends_api) to request private access. Go [here](https://docs.google.com/forms/d/e/1FAIpQLSfDhe_gg28tgeEttsSAPCmdO4U0wbqorVBG4Azr46IowGkCtA/viewform) to view Google's private API access TOS*
 
+---
+
 ## Weather Data
 [National Centers for Environmental Information (NCEI)](https://www.ncei.noaa.gov/cdo-web/)
 
  Daily measurements for observed temperatures, daily precipitation/snowfall, and average windspeed are collected from the NCEI Access Data Service API, which provides programmatic access to the NOAA Global Historical Climate Network – Daily dataset. 
  
  The station id was GHCND:USW00094860, representing the Grand Rapids Gerald R. Ford International Airport station. 
+
+ ---
 
 ## Air Quality Data
 [Environmental Protection Agency (EPA) Air Quality System (AQS)](https://www.epa.gov/aqs)
