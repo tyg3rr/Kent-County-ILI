@@ -8,6 +8,22 @@ cfg = configparser.ConfigParser()
 cfg.read('utils/secrets.ini')
 
 def get_aqi_dataset() -> pd.DataFrame:
+    """
+    Retrieves the Air Quality Index (AQI) dataset.
+
+    Returns:
+        pd.DataFrame: The AQI dataset containing the following columns:
+            - epiweek: The epidemiological week.
+            - Overall AQI Value: The overall AQI value.
+            - Main Pollutant: The main pollutant.
+            - CO: Carbon monoxide level.
+            - Ozone: Ozone level.
+            - PM10: Particulate matter (PM10) level.
+            - PM25: Particulate matter (PM2.5) level.
+            - Days_Good: Number of days with good air quality.
+            - Days_Moderate: Number of days with moderate air quality.
+            - Days_Unhealthy: Number of days with unhealthy air quality.
+    """
     ROOT_PATH = path.abspath(cfg.get('default','root'))
     DATA_PATH = path.join(ROOT_PATH, 'src/data')
     dd = pd.concat(
