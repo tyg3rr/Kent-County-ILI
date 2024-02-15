@@ -18,4 +18,4 @@ This research aligns with the CDC Center for Forecasting and Outbreak Analytics 
 
 ## Keywords
 
-isease forecasting, local public health, analytic methodology
+Disease forecasting, local public health, analytic methodology
